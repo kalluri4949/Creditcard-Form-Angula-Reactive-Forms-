@@ -1,0 +1,11 @@
+<form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
+  <app-input label="Name" [control]="creditForm.controls.name"></app-input>
+  <app-input label="Card Number" [control]="creditForm.controls.cardNumber"></app-input>
+  <app-input label="Expiration" [control]="creditForm.controls.expiration"></app-input>
+  <app-input label="Security Code" [control]="creditForm.controls.securityCode"></app-input>
+  <button class="button is-primary" [disabled]="!creditForm.valid" type="submit">Submit</button>
+</form>
+<hr>
+<div>form content: {{creditForm.value | json}}</div>
+<div>form is valid:{{creditForm.valid}}</div>
+<div>Errors around name{{creditForm.controls.name.errors | json}}</div>
