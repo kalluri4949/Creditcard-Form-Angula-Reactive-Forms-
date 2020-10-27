@@ -30,8 +30,11 @@ export class CardFormComponent implements OnInit {
       Validators.maxLength(3),
     ]),
   });
-  onSubmit(): any {
+  onSubmit(): void {
     console.log('submitted');
+  }
+  onReset(): void {
+    this.creditForm.reset();
   }
   constructor() {}
 

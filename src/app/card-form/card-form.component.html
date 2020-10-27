@@ -1,11 +1,29 @@
-<form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
-  <app-input label="Name" [control]="creditForm.controls.name"></app-input>
-  <app-input label="Card Number" [control]="creditForm.controls.cardNumber"></app-input>
-  <app-input label="Expiration" [control]="creditForm.controls.expiration"></app-input>
-  <app-input label="Security Code" [control]="creditForm.controls.securityCode"></app-input>
-  <button class="button is-primary" [disabled]="!creditForm.valid" type="submit">Submit</button>
-</form>
-<hr>
+<div class="columns">
+  <div class="column">
+    <app-card [name]="creditForm.controls.name.value" [expiration]="creditForm.controls.expiration.value"
+      [cardNumber]="creditForm.controls.cardNumber.value"></app-card>
+  </div>
+  <div class="column">
+    <form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
+      <app-input label="Name" [control]="creditForm.controls.name"></app-input>
+      <app-input label="Card Number" [control]="creditForm.controls.cardNumber"></app-input>
+      <div class="columns">
+        <div class="column">
+          <app-input label="Expiration (MM/YY)" [control]="creditForm.controls.expiration"></app-input>
+        </div>
+        <div class="column">
+          <app-input label="Security Code" [control]="creditForm.controls.securityCode"></app-input>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="button is-primary" [disabled]="!creditForm.valid" type="submit">Submit</button>
+        <button class="button is-warning" type="submit" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <hr>
 <div>form content: {{creditForm.value | json}}</div>
 <div>form is valid:{{creditForm.valid}}</div>
-<div>Errors around name{{creditForm.controls.name.errors | json}}</div>
+<div>Errors around name{{creditForm.controls.name.errors | json}}</div> -->
